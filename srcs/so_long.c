@@ -53,13 +53,13 @@ int	main(void)
 	x = 1;
 	while (x < 480)
 	{
-		my_pixel_put(&image.img_ptr, 640 / 2, x, 0x000FFFFFF);
+		my_pixel_put(&image, 640 / 2, x, 0x000FFFFFF);
 		x++;
 	}
 	x = 1;
 	while (x < 640)
 	{
-		my_pixel_put(&image.img_ptr, x, 480 / 2, 0x000FFFFFF);
+		my_pixel_put(&image, x, 480 / 2, 0x000FFFFFF);
 		x++;
 	}
 	mlx_put_image_to_window(vars.mlx, vars.win, image.img_ptr, 0, 0);
