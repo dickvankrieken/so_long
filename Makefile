@@ -6,19 +6,16 @@ OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Werror -Wextra
 
-practice:
-	$(CC) -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
-
 test: $(NAME)
 	./$(NAME)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
+	$(CC) -g -fsanitize=address -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Imlx -o $@ -c $<
+	$(CC) -g -fsanitize=address -Imlx -o $@ -c $<
 
 clean:
 	rm -f $(OBJS)
