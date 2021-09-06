@@ -1,34 +1,7 @@
 #include <mlx.h>
 #include <stdio.h>
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-typedef struct	s_img {
-	void *img_ptr;
-	char *address;
-	int	bits_per_pixel;
-	int	line_size;
-	int	endian;
-}	t_img;
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == 53)
-		mlx_destroy_window(vars->mlx, vars->win);
-}
-
-int	close(int keycode, t_vars *vars)
-{
-	mlx_destroy_window(vars->mlx, vars->win);
-}
-
-int	ft_mlx_key_pressed(int keycode, t_vars *vars)
-{
-	printf("keycode = %d", keycode);
-}
+#include <stdlib.h>
+#include "../so_long.h"
 
 void	my_pixel_put(t_img *img, int x, int y, unsigned int colour)
 {
@@ -40,15 +13,25 @@ void	my_pixel_put(t_img *img, int x, int y, unsigned int colour)
 	*(unsigned int *)dst = colour;
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	t_vars	vars;
+	t_game	game;
 	t_img	image;
 	int	x;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
-	image.img_ptr = mlx_new_image(vars.mlx, 640, 480);
+	if (argc < 2)
+	{
+		ft_printf("No map provided!");
+		exit(0);
+	}
+	if (argc > 2)
+	{
+		ft_printf("Too many arguments!");
+		exit(0);
+	}
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, 640, 480, "so_long");
+	image.img_ptr = mlx_new_image(game.mlx, 640, 480);
 	image.address = mlx_get_data_addr(image.img_ptr, &image.bits_per_pixel, &image.line_size, &image.endian);
 	x = 1;
 	while (x < 480)
@@ -62,8 +45,8 @@ int	main(void)
 		my_pixel_put(&image, x, 480 / 2, 0x000FFFFFF);
 		x++;
 	}
-	mlx_put_image_to_window(vars.mlx, vars.win, image.img_ptr, 0, 0);
-	mlx_hook(vars.win, 2, 1L<<17, close, &vars);
-//	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_loop(vars.mlx);
+	mlx_put_image_to_window(game.mlx, game.win, image.img_ptr, 0, 0);
+	mlx_hook(game.win, 17, (1L<<17), close, &game);
+	mlx_key_hook(game.win, ft_mlx_key_pressed, &game);
+	mlx_loop(game.mlx);
 }

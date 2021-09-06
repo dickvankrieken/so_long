@@ -1,6 +1,7 @@
 NAME = so_long
 
-SRCS = srcs/so_long.c
+SRCS = srcs/so_long.c \
+	srcs/hooks.c
 
 OBJS = $(SRCS:.c=.o)
 
