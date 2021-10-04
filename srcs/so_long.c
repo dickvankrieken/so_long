@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../so_long.h"
+#include "../libft/includes/ft_printf.h"
 
 void	my_pixel_put(t_img *img, int x, int y, unsigned int colour)
 {
