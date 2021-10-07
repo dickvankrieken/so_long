@@ -1,6 +1,6 @@
-NAME = so_long
+NAME = fdf
 
-SRCS = srcs/so_long.c srcs/hooks.c
+SRCS = srcs/fdf.c srcs/hooks.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -8,10 +8,8 @@ CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = libft/libft.a
 
-test: $(NAME)
-	./$(NAME)
-
 all: $(NAME)
+	./$(NAME) maps/42.fdf
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) -g -fsanitize=address -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
@@ -27,3 +25,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+re: fclean all

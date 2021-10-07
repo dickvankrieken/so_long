@@ -1,19 +1,23 @@
-#include "../so_long.h"
+#include <stdlib.h>
+#include <mlx.h>
+#include "../fdf.h"
+#include "../libft/includes/ft_printf.h"
 
-int	close(int keycode, t_vars *vars)
+int	close(int keycode, t_frame *frame)
 {
 	(void)keycode;
-	(void)vars;
+	(void)frame;
 	exit(0);
 }
 
 /* keycode 53 = escape key */
-int	ft_mlx_key_pressed(int keycode, t_vars *vars)
+int	ft_mlx_key_pressed(int keycode, t_frame *frame)
 {
-	printf("keycode = %d", keycode);
+	ft_printf("keycode = %d", keycode);
     if (keycode == 53)
 	{
-		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_window(frame->mlx, frame->win);
 		exit(0);
 	}
+	return (0);
 }
