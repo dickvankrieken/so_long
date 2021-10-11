@@ -3,3 +3,4 @@ resources
 so_long
 *.o
 *.pdf
+*.dSYM
