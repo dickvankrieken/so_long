@@ -1,6 +1,6 @@
-NAME = fdf
+NAME = so_long
 
-SRCS = srcs/fdf.c srcs/hooks.c srcs/parse.c
+SRCS = srcs/so_long.c srcs/hooks.c srcs/parse.c srcs/map.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -11,7 +11,7 @@ LIBFT = libft/libft.a
 GNL = libft/gnl/get_next_line.c libft/gnl/get_next_line_utils.c
 
 all: $(NAME)
-	./$(NAME) maps/42.fdf
+	./$(NAME) map1.ber
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL)
 	$(CC) -g -fsanitize=address -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
