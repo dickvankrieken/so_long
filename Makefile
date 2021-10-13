@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = srcs/so_long.c srcs/hooks.c srcs/parse.c srcs/map.c
+SRCS = srcs/so_long.c srcs/hooks.c srcs/parse.c srcs/map.c srcs/map_checks.c
 
 OBJS = $(SRCS:.c=.o)
 

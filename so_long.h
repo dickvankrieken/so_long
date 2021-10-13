@@ -27,6 +27,11 @@ typedef struct s_map {
 	int exit;
 }	t_map;
 
+typedef struct s_tile {
+	char	type;
+	char	type_orig;
+}
+
 typedef struct s_game {
 	t_window	window;
 	t_img		img;
@@ -43,5 +48,10 @@ void	parse(t_game *game, char *map);
 
 /* map.c */
 void	validate_map_dimensions(t_game *game, char *argv_map);
+
+/* map_checks.c */
+void	check_requirements(t_game *game);
+void	check_tiles(t_game *game, char *l);
+void	line_is_walls(char *line);
 
 #endif
