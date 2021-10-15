@@ -12,7 +12,7 @@ typedef struct s_window {
 
 typedef struct s_img {
 	void	*img;
-	char	*address;
+	char	*addr;
 	int		bpp;
 	int		line;
 	int		endian;
@@ -26,11 +26,6 @@ typedef struct s_map {
 	int player;
 	int exit;
 }	t_map;
-
-typedef struct s_tile {
-	char	type;
-	char	type_orig;
-}
 
 typedef struct s_game {
 	t_window	window;

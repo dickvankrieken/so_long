@@ -3,7 +3,7 @@
 #include "../libft/gnl/get_next_line.h"
 #include "../libft/includes/ft_printf.h"
 
-static void	map_init(t_game *game)
+static void	map_vars_init(t_game *game)
 {
 	game->map.exit = 0;
 	game->map.collectibles = 0;
@@ -16,7 +16,7 @@ void	validate_map_dimensions(t_game *game, char *argv_map)
 	int		ret;
 	int		fd;
 
-	map_init(game);
+	map_vars_init(game);
 	fd = open(argv_map, O_RDONLY);
 	ret = get_next_line(fd, &line);
 	line_is_walls(line);
