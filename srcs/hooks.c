@@ -12,9 +12,12 @@ int	hook_key_press(int keycode, t_game *game)
 		mlx_destroy_window(game->window.mlx, game->window.win);
 		exit(0);
 	}
-	if (keycode = KEY_W)
+	if (keycode == KEY_W)
 	{
-		ft_printf("OK");
+		if (game->img.img)
+		{
+			ft_printf("OK");
+		}
 	}
 	return (0);
 }

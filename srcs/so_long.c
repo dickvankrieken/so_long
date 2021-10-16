@@ -77,17 +77,17 @@ void	draw_player(t_game *d)
 	d->img.addr = mlx_get_data_addr(d->img.img, &d->img.bpp, &d->img.line, &d->img.endian);
 	d->img.img = mlx_xpm_file_to_image(d->window.mlx, "./assets/player.xpm", &width, &height);
 	ft_printf("width = %d, height = %d", width, height);
-	while (y < height)
-	{
-		while (x < width)
-		{
-			c = ft_pixel_get(&d->img, x, y);
-			ft_pixel_put(&d->img, x, y, c);
-			x++;
-		}
-		x = 200;
-		y++;
-	}
+	// while (y < height)
+	// {
+	// 	while (x < width)
+	// 	{
+	// 		c = ft_pixel_get(&d->img, x, y);
+	// 		ft_pixel_put(&d->img, x, y, c);
+	// 		x++;
+	// 	}
+	// 	x = 200;
+	// 	y++;
+	// }
 	mlx_put_image_to_window(d->window.mlx, d->window.win, d->img.img, 0, 0);
 	mlx_put_image_to_window(d->window.mlx, d->window.win, d->img.img, 64, 0);
 }
@@ -106,10 +106,11 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	game.window.mlx = mlx_init();
-	game.window.win = mlx_new_window(game.window.mlx, 640, 640, "so long");
 	parse(&game, argv[1]);
-	draw_player(&game);
+	game.window.win = mlx_new_window(game.window.mlx, game.map.columns * 65, game.map.rows * 65, "so long");
 	draw_map(&game);
+	draw_player(&game);
+
 	mlx_hook(game.window.win, 17, (1L << 17), close_window, &game.window);
 	mlx_hook(game.window.win, 04, (1L << 2), print_mouse_enter, &game.window);
 	mlx_hook(game.window.win, 02, (1L << 0), hook_key_press, &game.window);

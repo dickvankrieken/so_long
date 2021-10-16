@@ -1,3 +1,4 @@
+#include <mlx.h>
 #include <fcntl.h>
 #include "../includes/so_long.h"
 #include "../libft/gnl/get_next_line.h"
@@ -26,6 +27,7 @@ void	validate_map_dimensions(t_game *game, char *argv_map)
 	{
 		ret = get_next_line(fd, &line);
 		check_tiles(game, line);
+
 		if (ft_strlen(line) != game->map.columns)
 		{
 			ft_printf("Error, map is not rectangular\n");
@@ -35,4 +37,26 @@ void	validate_map_dimensions(t_game *game, char *argv_map)
 	}
 	check_requirements(game);
 	line_is_walls(line);
+}
+
+void	draw_map(t_game *game)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	j = 0;
+			while (i < game->map.rows)
+	{
+		while (j < game->map.columns)
+		{
+		game->img.img = mlx_xpm_file_to_image(game->window.mlx, "./assets/grass.xpm", &game->img.width, &game->img.height);
+			game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bpp, &game->img.line, &game->img.endian);
+			mlx_put_image_to_window(game->window.mlx, game->window.win, game->img.img, j * 65, i * 65);
+
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }

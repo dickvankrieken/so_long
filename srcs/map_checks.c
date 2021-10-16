@@ -1,6 +1,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
-#include "../so_long.h"
+#include "../includes/so_long.h"
 #include "../libft/includes/ft_printf.h"
 
 void	check_requirements(t_game *game)
