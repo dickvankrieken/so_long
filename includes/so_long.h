@@ -1,15 +1,13 @@
 #ifndef FDF_H
 # define FDF_H
 
-/* macros for x11 keypress numbers */
-# define ESC 53
-
 /* structs */
 typedef struct s_window {
 	void	*mlx;
 	void	*win;
 }	t_window;
 
+// IMAGES
 typedef struct s_img {
 	void	*img;
 	char	*addr;
@@ -19,7 +17,7 @@ typedef struct s_img {
 }	t_img;
 
 typedef struct s_map {
-	int *map_values;
+	char **data;
 	int	columns;
 	int rows;
 	int collectibles;
@@ -36,7 +34,7 @@ typedef struct s_game {
 /* function prototypes */
 /* hooks.c */
 int		close_window(t_game *game);
-int		ft_mlx_key_pressed(int keycode, t_game *game);
+int		hook_key_press(int keycode, t_game *game);
 
 /* parse.c */
 void	parse(t_game *game, char *map);

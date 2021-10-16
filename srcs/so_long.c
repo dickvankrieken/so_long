@@ -1,7 +1,8 @@
 #include <mlx.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../so_long.h"
+#include "../includes/so_long.h"
+#include "../includes/keycodes.h"
 #include "../libft/includes/ft_printf.h"
 
 void	ft_pixel_put(t_img *img, int x, int y, unsigned int colour)
@@ -42,15 +43,12 @@ void	init(t_game *game)
 	game->window.win = mlx_new_window(game->window.mlx, 640, 480, "so long");
 }
 
-
-void	draw_redsquare(t_game *d)
+void	draw_redtile(t_game *d)
 {
 	int	x;
 	int y;
-	int width;
-	int height;
 
-	d->img.img = mlx_new_image(d->window.mlx, 640, 480);
+	d->img.img = mlx_new_image(d->window.mlx, 640, 640);
 	d->img.addr = mlx_get_data_addr(d->img.img, &d->img.bpp, &d->img.line, &d->img.endian);
 	y = 0;
 	x = 0;
@@ -78,6 +76,7 @@ void	draw_player(t_game *d)
 	d->img.img = mlx_new_image(d->window.mlx, 400, 400);
 	d->img.addr = mlx_get_data_addr(d->img.img, &d->img.bpp, &d->img.line, &d->img.endian);
 	d->img.img = mlx_xpm_file_to_image(d->window.mlx, "./assets/player.xpm", &width, &height);
+	ft_printf("width = %d, height = %d", width, height);
 	while (y < height)
 	{
 		while (x < width)
@@ -89,7 +88,8 @@ void	draw_player(t_game *d)
 		x = 200;
 		y++;
 	}
-	mlx_put_image_to_window(d->window.mlx, d->window.win, d->img.img, 600, 200);
+	mlx_put_image_to_window(d->window.mlx, d->window.win, d->img.img, 0, 0);
+	mlx_put_image_to_window(d->window.mlx, d->window.win, d->img.img, 64, 0);
 }
 
 int	print_mouse_enter(int z, int x, int y, t_game *game)
@@ -98,6 +98,7 @@ int	print_mouse_enter(int z, int x, int y, t_game *game)
 
 	c = ft_pixel_get(&game->img, x, y);
 	ft_printf("colour = 0x00%X, x = %d, y = %d\n", c, x, y);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -105,11 +106,12 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	game.window.mlx = mlx_init();
-	game.window.win = mlx_new_window(game.window.mlx, 640, 480, "so long");
+	game.window.win = mlx_new_window(game.window.mlx, 640, 640, "so long");
 	parse(&game, argv[1]);
 	draw_player(&game);
-	mlx_key_hook(game.window.win, ft_mlx_key_pressed, &game.window);
+	draw_map(&game);
 	mlx_hook(game.window.win, 17, (1L << 17), close_window, &game.window);
 	mlx_hook(game.window.win, 04, (1L << 2), print_mouse_enter, &game.window);
+	mlx_hook(game.window.win, 02, (1L << 0), hook_key_press, &game.window);
 	mlx_loop(game.window.mlx);
 }

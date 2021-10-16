@@ -1,13 +1,20 @@
 #include <stdlib.h>
 #include <mlx.h>
-#include "../so_long.h"
+#include "../includes/so_long.h"
+#include "../includes/keycodes.h"
 
-int	ft_mlx_key_pressed(int keycode, t_game *game)
+#include "../libft/includes/ft_printf.h"
+
+int	hook_key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(game->window.mlx, game->window.win);
 		exit(0);
+	}
+	if (keycode = KEY_W)
+	{
+		ft_printf("OK");
 	}
 	return (0);
 }
