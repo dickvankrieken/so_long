@@ -43,11 +43,13 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	game_init(&game);
+//	game.window.mlx = mlx_init();
 
 	parse(&game, argv[1]);
 	game.window.win = mlx_new_window(game.window.mlx, game.map.columns * 64, game.map.rows * 64, "so long");
 	draw_map(&game);
 //	draw_player(&game);
+ft_printf("rows = %d", game.map.rows);
 	mlx_loop_hook(game.window.mlx, game_loop, &game);
 	mlx_hook(game.window.win, 17, (1L << 17), close_window, &game.window);
 	mlx_hook(game.window.win, 02, (1L << 0), hook_key_press, &game.window);

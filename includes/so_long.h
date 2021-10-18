@@ -34,7 +34,10 @@ typedef struct s_player {
 typedef struct s_game {
 	t_window	window;
 	t_img		img;
-	t_player	player;
+	t_img		p_img;
+	t_img		c_img;
+	t_img		w_img;
+	t_img		e_img;
 	t_map		map;
 	int			update;
 }	t_game;
