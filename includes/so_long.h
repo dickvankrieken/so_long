@@ -19,7 +19,7 @@ typedef struct s_img {
 }	t_img;
 
 typedef struct s_map {
-	char **data;
+	char *data;
 	int	columns;
 	int rows;
 	int collectibles;
@@ -27,10 +27,16 @@ typedef struct s_map {
 	int exit;
 }	t_map;
 
+typedef struct s_player {
+	t_img	img;
+}	t_player;
+
 typedef struct s_game {
 	t_window	window;
 	t_img		img;
+	t_player	player;
 	t_map		map;
+	int			update;
 }	t_game;
 
 /* function prototypes */
@@ -41,8 +47,13 @@ int		hook_key_press(int keycode, t_game *game);
 /* parse.c */
 void	parse(t_game *game, char *map);
 
+/* game.c */
+int    game_loop(t_game *game);
+void   game_init(t_game *game);
+
 /* map.c */
 void	validate_map_dimensions(t_game *game, char *argv_map);
+void	draw_map(t_game *game);
 
 /* map_checks.c */
 void	check_requirements(t_game *game);

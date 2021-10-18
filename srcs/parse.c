@@ -5,6 +5,34 @@
 #include "../libft/includes/ft_printf.h"
 #include "../libft/gnl/get_next_line.h"
 
+void	store_map(t_map *map, char *argv)
+{
+	char	*line;
+	int	fd;
+	int	row;
+	int	i;
+
+	i = 0;
+	row = 0;
+	fd = open(argv, O_RDONLY);
+	map->data = (char *)malloc(sizeof(char) * map->columns * map->rows + 1);
+	if (!map->data)
+		exit(EXIT_FAILURE);
+	while (row < map->rows)
+	{
+		get_next_line(fd, &line);
+		while (i < map->columns)
+		{
+			map->data[row * map->columns + i] = line[i];
+			i++;
+		}
+		i = 0;
+		row++;
+	}
+	map->data[row * map->columns + i] = '\0';
+	ft_printf("%s", map->data);
+}
+
 void	validate_file_format(char *argv_map)
 {
 	int	len;
@@ -19,18 +47,7 @@ void	validate_file_format(char *argv_map)
 
 void	parse(t_game *game, char *argv_map)
 {
-	char	*line;
-	int		fd;
-	int		ret;
-
 	validate_file_format(argv_map);
 	validate_map_dimensions(game, argv_map);
-	fd = open(argv_map, O_RDONLY);
-	ret = get_next_line(fd, &line);
-	ft_printf("%s\n", line);
-	while (ret > 0)
-	{
-		ret = get_next_line(fd, &line);
-		ft_printf("%s\n", line);
-	}
+	store_map(&game->map, argv_map);
 }

@@ -27,7 +27,6 @@ void	validate_map_dimensions(t_game *game, char *argv_map)
 	{
 		ret = get_next_line(fd, &line);
 		check_tiles(game, line);
-
 		if (ft_strlen(line) != game->map.columns)
 		{
 			ft_printf("Error, map is not rectangular\n");
@@ -46,13 +45,15 @@ void	draw_map(t_game *game)
 
 	i = 0;
 	j = 0;
-			while (i < game->map.rows)
+	game->img.img = mlx_xpm_file_to_image(game->window.mlx, "./assets/grass.xpm", &game->img.width, &game->img.height);
+	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bpp, &game->img.line, &game->img.endian);
+	while (i < game->map.rows)
 	{
 		while (j < game->map.columns)
 		{
-		game->img.img = mlx_xpm_file_to_image(game->window.mlx, "./assets/grass.xpm", &game->img.width, &game->img.height);
-			game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bpp, &game->img.line, &game->img.endian);
-			mlx_put_image_to_window(game->window.mlx, game->window.win, game->img.img, j * 65, i * 65);
+			mlx_put_image_to_window(game->window.mlx, game->window.win, game->img.img, j * 64, i * 64);
+			if (game->map.data[i * game->map.rows + j] == 'P')
+				mlx_put_image_to_window(game->window.mlx, game->window.win, game->player.img.img, j * 64, i * 64);
 
 			j++;
 		}
