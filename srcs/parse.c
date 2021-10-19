@@ -5,32 +5,49 @@
 #include "../libft/includes/ft_printf.h"
 #include "../libft/gnl/get_next_line.h"
 
-void	store_map(t_map *map, char *argv)
+void	malloc_map(t_map *map)
 {
-	char	*line;
-	int	fd;
-	int	row;
 	int	i;
 
 	i = 0;
-	row = 0;
-	fd = open(argv, O_RDONLY);
-	map->data = (char *)malloc(sizeof(char) * map->columns * map->rows + 1);
+	map->data = malloc(sizeof(char *) * map->rows);
 	if (!map->data)
 		exit(EXIT_FAILURE);
+	while (i < map->rows)
+	{
+		map->data[i] = malloc(sizeof(char) * map->columns);
+		if (!map->data[i])
+		{
+			free_map_data(map, i);
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+}
+
+void	store_map(t_map *map, char *argv)
+{
+	char	*line;
+	int		fd;
+	int		column;
+	int		row;
+
+	column = 0;
+	row = 0;
+	fd = open(argv, O_RDONLY);
+	malloc_map(map);
 	while (row < map->rows)
 	{
 		get_next_line(fd, &line);
-		while (i < map->columns)
+		while (column < map->columns)
 		{
-			map->data[row * map->columns + i] = line[i];
-			i++;
+			map->data[row][column] = line[column];
+			column++;
 		}
-		i = 0;
+		column = 0;
 		row++;
+		free(line);
 	}
-	map->data[row * map->columns + i] = '\0';
-	ft_printf("%s", map->data);
 }
 
 void	validate_file_format(char *argv_map)
@@ -40,7 +57,8 @@ void	validate_file_format(char *argv_map)
 	len = ft_strlen(argv_map);
 	if (ft_strncmp(argv_map + (len - 4), ".ber", 4) != 0)
 	{
-		ft_printf("%s\nError, the map must be a file ending with .ber", argv_map - len);
+		ft_printf("%s\nError, the map must be a file ending with .ber",
+			argv_map - len);
 		exit(EXIT_FAILURE);
 	}
 }

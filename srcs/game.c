@@ -5,22 +5,9 @@
 #include "../includes/keycodes.h"
 #include "../libft/includes/ft_printf.h"
 
-int	game_loop(t_game *game)
-{
-	if (game->update)
-	{
-		ft_printf("test");
-		game->update = 0;
-	}
-	 return (0);
-}
-
 void	game_init(t_game *d)
 {
-	t_img	p;
-
 	d->window.mlx = mlx_init();
-	d->update = 0;
 	d->p_img.img = mlx_xpm_file_to_image(d->window.mlx, "./assets/player.xpm",
 			&d->p_img.width, &d->p_img.height);
 	d->p_img.addr = mlx_get_data_addr(d->p_img.img, &d->p_img.bpp,
@@ -36,5 +23,5 @@ void	game_init(t_game *d)
 	d->e_img.img = mlx_xpm_file_to_image(d->window.mlx, "./assets/exit.xpm",
 			&d->e_img.width, &d->e_img.height);
 	d->e_img.addr = mlx_get_data_addr(d->e_img.img, &d->e_img.bpp,
-			&d->e_img.width, &d->e_img.height);			
+			&d->e_img.width, &d->e_img.height);
 }
