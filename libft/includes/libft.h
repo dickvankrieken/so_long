@@ -6,12 +6,14 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/21 15:58:28 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/20 11:22:51 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/20 11:29:40 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# include <stdlib.h>
 
 typedef struct s_list
 {
