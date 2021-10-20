@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/14 21:06:29 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/06/21 09:27:24 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/20 17:44:56 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_convert
 	int				i;
 	unsigned int	u;
 	unsigned int	x;
-	unsigned int	X;
+	unsigned int	uc_x;
 	int				x_int;
 }	t_convert;
 

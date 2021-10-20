@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/14 19:08:34 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/08/01 15:11:48 by dvan-kri         ###   ########.fr       */
+/*   Updated: 2021/10/20 18:23:37 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,9 @@
 
 static int	pf_checktype(char *format, t_convert *p)
 {
-	if (*format == 'd' || *format == 'i' || *format == 'u')
-	{
-		p->type = *format;
-		return (1);
-	}
-	if (*format == 'x' || *format == 'X' || *format == 'c')
-	{
-		p->type = *format;
-		return (1);
-	}
-	if (*format == 'p' || *format == 's' || *format == '%')
+	if (*format == 'd' || *format == 'i' || *format == 'u'
+		|| *format == 'x' || *format == 'X' || *format == 'c'
+		|| *format == 'p' || *format == 's' || *format == '%')
 	{
 		p->type = *format;
 		return (1);
