@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:38:08 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/20 12:38:09 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/20 18:36:30 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	validate_file_format(char *argv_map)
 	len = ft_strlen(argv_map);
 	if (ft_strncmp(argv_map + (len - 4), ".ber", 4) != 0)
 	{
-		ft_printf("%s\nError, the map must be a file ending with .ber",
+		ft_printf("%s\nError\nThe map must be a file ending with .ber",
 			argv_map - len);
 		exit(EXIT_FAILURE);
 	}
