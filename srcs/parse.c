@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <fcntl.h>
 #include "../includes/so_long.h"
 #include "../libft/includes/libft.h"

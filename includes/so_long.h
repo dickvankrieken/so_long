@@ -7,7 +7,6 @@ typedef struct s_window {
 	void	*win;
 }	t_window;
 
-// IMAGES
 typedef struct s_img {
 	void	*img;
 	char	*addr;
@@ -73,8 +72,8 @@ void	player_move_left(t_game *game);
 void	player_move_right(t_game *game);
 
 /* move_checks.c */
-void	check_collectible_tile(t_game *game, int move_y, int move_x);
-void	check_empty_tile(t_game *game, int move_y, int move_x);
-void	check_exit_tile(t_game *game, int move_y, int move_x);
+int		check_collectible_tile(t_game *game, int move_y, int move_x);
+int		check_empty_tile(t_game *game, int move_y, int move_x);
+int		check_exit_tile(t_game *game, int move_y, int move_x);
 
 #endif
