@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: dvan-kri <dvan-kri@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2021/10/20 12:21:21 by dvan-kri      #+#    #+#                  #
+#    Updated: 2021/10/20 12:48:09 by dvan-kri      ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
 
 SRCS = srcs/so_long.c srcs/hooks.c srcs/parse.c srcs/map.c srcs/map_checks.c srcs/game.c srcs/move.c srcs/move_checks.c
@@ -14,13 +26,13 @@ all: $(NAME)
 	./$(NAME) map1.ber
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL)
-	$(CC) -g -fsanitize=address -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
+	$(CC) -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
 
 $(LIBFT):
 	make -C libft
 
 %.o: %.c
-	$(CC) -g -fsanitize=address -Imlx -o $@ -c $<
+	$(CC) -Imlx -o $@ -c $<
 
 clean:
 	rm -f $(OBJS)

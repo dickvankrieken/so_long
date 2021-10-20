@@ -1,2 +1,0 @@
-multi-dimensional array in C
-https://www.youtube.com/watch?v=ZvjpllMmUzM

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   map.c                                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/10/20 12:37:46 by dvan-kri      #+#    #+#                 */
+/*   Updated: 2021/10/20 12:37:48 by dvan-kri      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <mlx.h>
 #include <fcntl.h>
 #include "../includes/so_long.h"
@@ -10,6 +22,28 @@ static void	game_vars_init(t_game *game)
 	game->map.collectibles = 0;
 	game->map.player = 0;
 	game->player.moves = 0;
+}
+
+static void	put_images_set_player_coordinates(t_game *d, int i, int j)
+{
+	mlx_put_image_to_window(d->window.mlx, d->window.win,
+		d->img.img, j * 64, i * 64);
+	if (d->map.data[i][j] == 'P')
+	{
+		mlx_put_image_to_window(d->window.mlx, d->window.win,
+			d->p_img.img, j * 64, i * 64);
+		d->player.x = j;
+		d->player.y = i;
+	}
+	if (d->map.data[i][j] == '1')
+		mlx_put_image_to_window(d->window.mlx, d->window.win,
+			d->w_img.img, j * 64, i * 64);
+	if (d->map.data[i][j] == 'C')
+		mlx_put_image_to_window(d->window.mlx, d->window.win,
+			d->c_img.img, j * 64, i * 64);
+	if (d->map.data[i][j] == 'E')
+		mlx_put_image_to_window(d->window.mlx, d->window.win,
+			d->e_img.img, j * 64, i * 64);
 }
 
 void	validate_map_dimensions(t_game *game, char *argv_map)
@@ -37,28 +71,6 @@ void	validate_map_dimensions(t_game *game, char *argv_map)
 	}
 	check_requirements(game);
 	line_is_walls(line);
-}
-
-static void	put_images_set_player_coordinates(t_game *d, int i, int j)
-{
-	mlx_put_image_to_window(d->window.mlx, d->window.win,
-		d->img.img, j * 64, i * 64);
-	if (d->map.data[i][j] == 'P')
-	{
-		mlx_put_image_to_window(d->window.mlx, d->window.win,
-			d->p_img.img, j * 64, i * 64);
-		d->player.x = j;
-		d->player.y = i;
-	}
-	if (d->map.data[i][j] == '1')
-		mlx_put_image_to_window(d->window.mlx, d->window.win,
-			d->w_img.img, j * 64, i * 64);
-	if (d->map.data[i][j] == 'C')
-		mlx_put_image_to_window(d->window.mlx, d->window.win,
-			d->c_img.img, j * 64, i * 64);
-	if (d->map.data[i][j] == 'E')
-		mlx_put_image_to_window(d->window.mlx, d->window.win,
-			d->e_img.img, j * 64, i * 64);
 }
 
 void	free_map_data(t_map *map, int number)

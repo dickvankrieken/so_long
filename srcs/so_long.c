@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   so_long.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/10/20 12:41:31 by dvan-kri      #+#    #+#                 */
+/*   Updated: 2021/10/20 12:41:32 by dvan-kri      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <mlx.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "../includes/so_long.h"
-#include "../includes/keycodes.h"
 #include "../libft/includes/ft_printf.h"
 
 void	check_map_argument(int argc)
