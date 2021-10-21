@@ -6,13 +6,13 @@
 #    By: dvan-kri <dvan-kri@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/20 12:21:21 by dvan-kri      #+#    #+#                  #
-#    Updated: 2021/10/20 16:49:03 by dvan-kri      ########   odam.nl          #
+#    Updated: 2021/10/21 14:33:15 by dvan-kri      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS = srcs/so_long.c srcs/hooks.c srcs/parse.c srcs/map.c srcs/map_checks.c srcs/game.c srcs/move.c srcs/move_checks.c
+SRCS = srcs/so_long.c srcs/hooks.c srcs/parse.c srcs/map.c srcs/map_check.c srcs/map_check2.c srcs/game.c srcs/move.c srcs/move_checks.c 
 
 OBJS = $(SRCS:.c=.o)
 
