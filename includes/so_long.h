@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:32:02 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 15:29:08 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 16:22:56 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	check_tiles(t_game *game, char *l);
 void	line_is_walls(char *line);
 
 /* map_check2.c */
+void	multiple_to_one_player(t_game *game);
 void	validate_map(t_game *game);
 
 /* move.c */

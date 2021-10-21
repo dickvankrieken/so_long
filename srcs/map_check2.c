@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/21 15:26:03 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 15:26:24 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 16:27:03 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,31 @@
 #include "../includes/so_long.h"
 #include "../libft/includes/libft.h"
 #include "../libft/includes/ft_printf.h"
+
+void	multiple_to_one_player(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < game->map.rows)
+	{
+		while (j < game->map.columns)
+		{
+			if (game->map.data[i][j] == 'P')
+			{
+				game->map.data[i][j] = '0';
+				game->map.player--;
+				if (game->map.player == 1)
+					return ;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
 
 int	count_rows(t_map map)
 {

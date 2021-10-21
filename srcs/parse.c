@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:38:08 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 15:11:08 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 16:24:55 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,8 @@ void	parse(t_game *game, char *argv_map)
 	load_map_dimensions(game, argv_map);
 	store_map(&game->map, argv_map);
 	validate_map(game);
+	if (game->map.player > 1)
+	{
+		multiple_to_one_player(game);
+	}
 }

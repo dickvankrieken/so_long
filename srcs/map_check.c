@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:37:53 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 14:57:10 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 16:16:53 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_requirements(t_map map)
 		ft_printf("Error\nInvalid map, must contain collectibles\n");
 		exit(EXIT_FAILURE);
 	}
-	if (map.player != 1)
+	if (map.player == 0)
 	{
 		ft_printf("Error\nInvalid map, there must be one player\n");
 		exit(EXIT_FAILURE);
