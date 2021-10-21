@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:37:46 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 13:04:37 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 16:43:08 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ void	load_map_dimensions(t_game *game, char *argv_map)
 	while (ret > 0)
 	{
 		ret = get_next_line(fd, &line);
+		if (ret == -1)
+		{
+			free_map_data(&game->map, game->map.rows);
+			ft_printf("Error\nThere was an issue reading the file");
+			exit(EXIT_FAILURE);
+		}		
 		game->map.rows++;
 		free(line);
 	}

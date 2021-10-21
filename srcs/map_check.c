@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:37:53 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 16:16:53 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 18:15:25 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	check_tiles(t_game *game, char *l)
 {
 	if (*l != '1')
 	{
+		/* er staat opeens niets meer op de plek waar de 0e pointer van de map.data array naar wijst */
+		ft_printf("%s??", game->map.data[0]);
 		ft_printf("Error\nWrong map format, not surrounded by only walls\n");
 		exit(EXIT_FAILURE);
 	}
@@ -63,13 +65,16 @@ void	check_tiles(t_game *game, char *l)
 	}
 }
 
-void	line_is_walls(char *line)
+void	line_is_walls(t_map map, char *line)
 {
+
 	while (*line != '\0')
 	{
 		if (*line != '1')
 		{
 			ft_printf("Error\nWrong map format, not surrounded by only walls\n");
+//			free_map_data(&map, number);
+//			while (1);
 			exit(EXIT_FAILURE);
 		}
 		line++;

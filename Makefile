@@ -6,7 +6,7 @@
 #    By: dvan-kri <dvan-kri@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/20 12:21:21 by dvan-kri      #+#    #+#                  #
-#    Updated: 2021/10/21 14:33:15 by dvan-kri      ########   odam.nl          #
+#    Updated: 2021/10/21 16:36:47 by dvan-kri      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,13 @@ all: $(NAME)
 	./$(NAME) map1.ber
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL)
-	$(CC) -g -fsanitize=address -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
+	$(CC) -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
 
 $(LIBFT):
 	make -C libft
 
 %.o: %.c
-	$(CC) -g -fsanitize=address -Imlx -o $@ -c $<
+	$(CC) -Imlx -o $@ -c $<
 
 clean:
 	rm -f $(OBJS)

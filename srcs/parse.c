@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:38:08 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 16:24:55 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 18:09:28 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	store_map_read_lines(t_map *map, int fd)
 	row = 0;
 	while (row < map->rows)
 	{
-		get_next_line(fd, &line);
+		ret = get_next_line(fd, &line);
 		if (ret == -1)
 		{
 			free_map_data(map, row);
