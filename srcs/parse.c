@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:38:08 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/20 18:36:30 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 15:11:08 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../libft/includes/ft_printf.h"
 #include "../libft/gnl/get_next_line.h"
 
-void	malloc_map(t_map *map)
+static void	malloc_map_rows(t_map *map)
 {
 	int	i;
 
@@ -36,29 +36,40 @@ void	malloc_map(t_map *map)
 	}
 }
 
-void	store_map(t_map *map, char *argv)
+void	store_map_read_lines(t_map *map, int fd)
 {
 	char	*line;
-	int		fd;
-	int		column;
+	int		ret;
 	int		row;
 
-	column = 0;
 	row = 0;
-	fd = open(argv, O_RDONLY);
-	malloc_map(map);
 	while (row < map->rows)
 	{
 		get_next_line(fd, &line);
-		while (column < map->columns)
+		if (ret == -1)
 		{
-			map->data[row][column] = line[column];
-			column++;
+			free_map_data(map, row);
+			ft_printf("Error\nThere was an issue reading the file");
+			exit(EXIT_FAILURE);
 		}
-		column = 0;
-		row++;
+		map->data[row] = ft_strdup(line);
 		free(line);
+		row++;
 	}
+}
+
+void	store_map(t_map *map, char *argv)
+{
+	int		fd;
+
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_printf("Error\nFailed to open map file");
+		exit(EXIT_FAILURE);
+	}
+	malloc_map_rows(map);
+	store_map_read_lines(map, fd);
 }
 
 void	validate_file_format(char *argv_map)
@@ -68,7 +79,7 @@ void	validate_file_format(char *argv_map)
 	len = ft_strlen(argv_map);
 	if (ft_strncmp(argv_map + (len - 4), ".ber", 4) != 0)
 	{
-		ft_printf("%s\nError\nThe map must be a file ending with .ber",
+		ft_printf("Error\nThe map must be a file ending with .ber",
 			argv_map - len);
 		exit(EXIT_FAILURE);
 	}
@@ -77,6 +88,7 @@ void	validate_file_format(char *argv_map)
 void	parse(t_game *game, char *argv_map)
 {
 	validate_file_format(argv_map);
-	validate_map_dimensions(game, argv_map);
+	load_map_dimensions(game, argv_map);
 	store_map(&game->map, argv_map);
+	validate_map(game);
 }
