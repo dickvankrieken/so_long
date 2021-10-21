@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:32:02 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/20 12:32:07 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/21 15:29:08 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_player {
 typedef struct s_game {
 	t_window	window;
 	t_player	player;
-	t_img		img;
+	t_img		g_img;
 	t_img		p_img;
 	t_img		c_img;
 	t_img		w_img;
@@ -66,16 +66,20 @@ void	parse(t_game *game, char *map);
 /* game.c */
 int		game_loop(t_game *game);
 void	game_init(t_game *game);
+void	game_vars_init(t_game *game);
 
 /* map.c */
-void	validate_map_dimensions(t_game *game, char *argv_map);
+void	load_map_dimensions(t_game *game, char *argv_map);
 void	draw_map(t_game *game);
 void	free_map_data(t_map *map, int number);
 
-/* map_checks.c */
-void	check_requirements(t_game *game);
+/* map_check.c */
+void	check_requirements(t_map map);
 void	check_tiles(t_game *game, char *l);
 void	line_is_walls(char *line);
+
+/* map_check2.c */
+void	validate_map(t_game *game);
 
 /* move.c */
 void	player_move_up(t_game *game);
