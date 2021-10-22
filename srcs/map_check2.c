@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/21 15:26:03 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 18:15:51 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/22 14:52:29 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,13 @@ void	validate_map(t_game *game)
 	i = 0;
 	count_rows_free_empty_lines(&game->map);
 	line_is_walls(game->map, game->map.data[0]);
-/* line is walls laat de eerste regel verdwijnen? */
 	game->map.columns = ft_strlen(game->map.data[0]);
 	while (i < game->map.rows - 1)
 	{
 		check_tiles(game, game->map.data[i]);
 		if (game->map.columns != ft_strlen(game->map.data[i]))
 		{
-			free_map_data(&game->map, i);
+			free_map_data(&game->map, game->map.rows);
 			ft_printf("Error\nMap must be rectangular");
 			exit(EXIT_FAILURE);
 		}
