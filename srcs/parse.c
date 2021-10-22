@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:38:08 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 18:09:28 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/22 14:42:51 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,10 @@ static void	malloc_map_rows(t_map *map)
 	int	i;
 
 	i = 0;
+
 	map->data = malloc(sizeof(char *) * map->rows);
 	if (!map->data)
 		exit(EXIT_FAILURE);
-	while (i < map->rows)
-	{
-		map->data[i] = malloc(sizeof(char) * map->columns);
-		if (!map->data[i])
-		{
-			free_map_data(map, i);
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
 }
 
 void	store_map_read_lines(t_map *map, int fd)
@@ -88,9 +79,13 @@ void	validate_file_format(char *argv_map)
 void	parse(t_game *game, char *argv_map)
 {
 	validate_file_format(argv_map);
+
 	load_map_dimensions(game, argv_map);
+
 	store_map(&game->map, argv_map);
+
 	validate_map(game);
+
 	if (game->map.player > 1)
 	{
 		multiple_to_one_player(game);
