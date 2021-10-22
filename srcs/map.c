@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:37:46 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 16:43:08 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/22 14:46:57 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	free_map_data(t_map *map, int number)
 	int	i;
 
 	i = 0;
-	while (i < number)
+	while (number > 0 && i <= number)
 	{
 		free(map->data[i]);
 		i++;
