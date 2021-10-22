@@ -6,16 +6,12 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:32:35 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 13:05:53 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/22 16:22:18 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "../includes/so_long.h"
-#include "../includes/keycodes.h"
-#include "../libft/includes/ft_printf.h"
 
 void	game_vars_init(t_game *game)
 {

@@ -6,11 +6,10 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:37:58 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/20 12:37:59 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/22 16:27:20 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
 #include "../includes/so_long.h"
 
 void	player_move_up(t_game *game)
