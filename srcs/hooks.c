@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:37:29 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 16:41:07 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/22 15:02:26 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ int	close_window(t_game *game)
 {
 	free_map_data(&game->map, game->map.rows);
 	mlx_destroy_window(game->window.mlx, game->window.win);
-	while (1);
 	exit(0);
 }
