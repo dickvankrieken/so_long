@@ -6,7 +6,7 @@
 #    By: dvan-kri <dvan-kri@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/20 12:21:21 by dvan-kri      #+#    #+#                  #
-#    Updated: 2021/10/25 13:36:31 by dvan-kri      ########   odam.nl          #
+#    Updated: 2021/10/25 16:36:50 by dvan-kri      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(LIBFT):
 	make -C libft
 
 %.o: %.c
-	$(CC) -Imlx -o $@ -c $<
+	$(CC) -Imlx $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm -f $(OBJS)
