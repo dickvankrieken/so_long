@@ -6,7 +6,7 @@
 #    By: dvan-kri <dvan-kri@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/20 12:21:21 by dvan-kri      #+#    #+#                  #
-#    Updated: 2021/10/25 16:36:50 by dvan-kri      ########   odam.nl          #
+#    Updated: 2021/10/25 17:55:29 by dvan-kri      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ LIBFT = libft/libft.a
 GNL = libft/gnl/get_next_line.c libft/gnl/get_next_line_utils.c
 
 all: $(NAME)
-	./$(NAME) map1.ber
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL)
 	$(CC) -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
