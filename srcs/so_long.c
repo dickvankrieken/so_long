@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:41:31 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/20 12:41:32 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/27 13:01:55 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ int	main(int argc, char **argv)
 	mlx_hook(game.window.win, 17, (1L << 17), close_window, &game.window);
 	mlx_hook(game.window.win, 02, (1L << 0), hook_key_press, &game.window);
 	mlx_loop(game.window.mlx);
+	return (0);
 }
