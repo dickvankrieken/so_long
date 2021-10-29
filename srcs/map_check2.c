@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/21 15:26:03 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/25 16:39:20 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 12:19:03 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	count_rows_free_empty_lines(t_map *map)
 	int	i;
 	int	j;
 
-	i = 0;	
+	i = 0;
 	while (i < map->rows && ft_strlen(map->data[i]))
 	{
 		i++;
@@ -58,8 +58,6 @@ static void	count_rows_free_empty_lines(t_map *map)
 	}
 	map->rows = j;
 }
-
-
 
 void	validate_map(t_game *game)
 {
