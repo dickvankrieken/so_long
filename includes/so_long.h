@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:32:02 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/21 18:14:42 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 11:46:06 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,7 @@ void	multiple_to_one_player(t_game *game);
 void	validate_map(t_game *game);
 
 /* move.c */
-void	player_move_up(t_game *game);
-void	player_move_down(t_game *game);
-void	player_move_left(t_game *game);
-void	player_move_right(t_game *game);
-
-/* move_checks.c */
+void	player_move(t_game *game, int y, int x);
 int		check_collectible_tile(t_game *game, int move_y, int move_x);
 int		check_empty_tile(t_game *game, int move_y, int move_x);
 int		check_exit_tile(t_game *game, int move_y, int move_x);

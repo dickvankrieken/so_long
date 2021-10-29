@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:37:29 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/25 16:41:21 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 11:40:49 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	hook_key_press(int keycode, t_game *game)
 	}
 	else if (keycode == KEY_W)
 	{
-		player_move_up(game);
+		player_move(game, -1, 0);
 	}
 	else if (keycode == KEY_A)
 	{
-		player_move_left(game);
+		player_move(game, 0, -1);
 	}
 	else if (keycode == KEY_S)
 	{
-		player_move_down(game);
+		player_move(game, 1, 0);
 	}
 	else if (keycode == KEY_D)
 	{
-		player_move_right(game);
+		player_move(game, 0, 1);
 	}			
 	return (0);
 }
