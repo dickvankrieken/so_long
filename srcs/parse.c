@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:38:08 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/22 16:21:18 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 13:14:06 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/so_long.h"
 #include "../libft/includes/libft.h"
 #include "../libft/includes/ft_printf.h"
-#include "../libft/gnl/get_next_line.h"
+#include "../libft/includes/get_next_line.h"
 
 static void	malloc_map_rows(t_map *map)
 {

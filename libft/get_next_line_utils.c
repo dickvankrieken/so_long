@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/19 10:31:22 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/29 12:47:39 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 13:33:45 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*find_nl(char *s)
 	return (NULL);
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	gnl_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	j;
@@ -31,8 +31,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	srclen;
 	size_t	dstlen;
 
-	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
+	srclen = gnl_strlen(src);
+	dstlen = gnl_strlen(dst);
 	if (dstsize <= dstlen)
 		return (dstsize + srclen);
 	if (dstsize > dstlen)
@@ -52,7 +52,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (dstlen + srclen);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*gnl_strjoin(char const *s1, char const *s2)
 {
 	char	*p;
 	int		dstsize;
@@ -62,9 +62,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s1 == NULL)
 		s1len = 0;
 	else
-		s1len = ft_strlen(s1);
-	dstsize = s1len + ft_strlen(s2) + 1;
-	p = malloc((s1len + ft_strlen(s2) + 1) * sizeof(char));
+		s1len = gnl_strlen(s1);
+	dstsize = s1len + gnl_strlen(s2) + 1;
+	p = malloc((s1len + gnl_strlen(s2) + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
 	i = 0;
@@ -74,16 +74,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	*(p + i) = '\0';
-	ft_strlcat(p, s2, dstsize);
+	gnl_strlcat(p, s2, dstsize);
 	return (p);
 }
 
-char	*ft_strdup(const char *s1)
+char	*gnl_strdup(const char *s1)
 {
 	char	*ptr;
 	int		i;
 
-	ptr = malloc((ft_strlen(s1) + 1) * sizeof(char));
+	ptr = malloc((gnl_strlen(s1) + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	i = 0;
@@ -96,7 +96,7 @@ char	*ft_strdup(const char *s1)
 	return (ptr);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	size_t	i;
 

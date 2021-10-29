@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/19 10:31:09 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/01/22 13:58:39 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 13:32:51 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 char				*find_nl(char *s);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
-char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strdup(const char *s1);
-size_t				ft_strlen(const char *s);
+size_t				gnl_strlcat(char *dst, const char *src, size_t dstsize);
+char				*gnl_strjoin(char const *s1, char const *s2);
+char				*gnl_strdup(const char *s1);
+size_t				gnl_strlen(const char *s);
 
 int					get_next_line(int fd, char **c);
 

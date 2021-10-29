@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 12:37:46 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/25 13:13:54 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 13:14:25 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include "../includes/so_long.h"
-#include "../libft/gnl/get_next_line.h"
+#include "../libft/includes/get_next_line.h"
 #include "../libft/includes/ft_printf.h"
 
 static void	put_images_set_player_coordinates(t_game *d, int i, int j)
@@ -61,7 +61,7 @@ void	load_map_dimensions(t_game *game, char *argv_map)
 			free_map_data(&game->map, game->map.rows);
 			ft_printf("Error\nThere was an issue reading the file");
 			exit(EXIT_FAILURE);
-		}		
+		}
 		game->map.rows++;
 		free(line);
 	}

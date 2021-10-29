@@ -6,7 +6,7 @@
 #    By: dvan-kri <dvan-kri@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/20 12:21:21 by dvan-kri      #+#    #+#                  #
-#    Updated: 2021/10/29 11:45:27 by dvan-kri      ########   odam.nl          #
+#    Updated: 2021/10/29 13:15:19 by dvan-kri      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,9 @@ CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = libft/libft.a
 
-GNL = libft/gnl/get_next_line.c libft/gnl/get_next_line_utils.c
-
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(GNL)
+$(NAME): $(OBJS) $(LIBFT)
 	$(CC) -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $@ $^
 
 $(LIBFT):

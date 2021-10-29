@@ -6,13 +6,14 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/19 10:30:58 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/29 12:47:43 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 13:27:42 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/select.h>
 #include <unistd.h>
 #include "includes/get_next_line.h"
+#include "includes/libft.h"
 
 int	free_string(int ret, char *s)
 {
@@ -28,15 +29,15 @@ int	write_to_line(char **line, char *buf, char **str, char *newline)
 		return (free_string(-1, *str));
 	*newline = '\0';
 	temp = *line;
-	*line = ft_strjoin(*line, buf);
+	*line = gnl_strjoin(*line, buf);
 	free(temp);
 	if (!*line)
 		return (free_string(-1, *str));
 	temp = *str;
 	if (ft_strlen(newline + 1) == 0)
-		*str = ft_strdup("");
+		*str = gnl_strdup("");
 	else
-		*str = ft_strdup(newline + 1);
+		*str = gnl_strdup(newline + 1);
 	free(temp);
 	if (!*str)
 		return (-1);
@@ -63,7 +64,7 @@ int	read_fd(char **line, int fd, char **str)
 		if (find_nl(buf) != NULL)
 			return (write_to_line(line, buf, str, find_nl(buf)));
 		temp = *line;
-		*line = ft_strjoin(*line, buf);
+		*line = gnl_strjoin(*line, buf);
 		free(temp);
 		if (!*line)
 			return (free_string(-1, *str));
@@ -79,17 +80,19 @@ int	get_next_line(int fd, char **line)
 	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
 	if (str[fd] == NULL)
-		str[fd] = ft_strdup("");
+		str[fd] = gnl_strdup("");
 	if (!str[fd])
 		return (-1);
 	if (find_nl(str[fd]) != NULL)
 	{
-		*line = ft_strdup("");
+		*line = gnl_strdup("");
+		if (!*line)
+			free_string(-1, str[fd]);
 		ret = write_to_line(line, str[fd], &str[fd], find_nl(str[fd]));
 	}
 	else
 	{
-		*line = ft_strdup(str[fd]);
+		*line = gnl_strdup(str[fd]);
 		if (!*line)
 			free_string(-1, str[fd]);
 		ret = read_fd(line, fd, &str[fd]);
