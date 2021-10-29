@@ -6,13 +6,13 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/19 10:30:58 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/10/04 14:28:06 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/10/29 12:47:43 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/select.h>
 #include <unistd.h>
-#include "get_next_line.h"
+#include "includes/get_next_line.h"
 
 int	free_string(int ret, char *s)
 {
