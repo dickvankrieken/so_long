@@ -22,9 +22,10 @@ MinilibX utilizes the X Window System to render a window in which graphical outp
 ## How to compile and run this program
 <pre><code>$ make
 $ ./so_long maps/map1.ber</code></pre>
-as the argument for the so_long program takes a .ber file examples of which, both correctly as incorrectly formatted can be found in the maps/ directory.
-<br />
-The map has to follow the following requirements:
+as the argument for the so_long program takes a .ber file.<br />
+Example map files  can be found in the maps/ directory. Some of the maps are deliberately formatted wrong to test/demonstrate the program's error detection<br />
+
+A valid map has to conform to the following requirements:
 * Must be entirely surrounded by walls (1)
 * Must contain at least one player (P)
 * Must contain at least one collectible (C)
