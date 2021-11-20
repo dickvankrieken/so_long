@@ -15,6 +15,8 @@ I coded a map parser that transforms this kind of map:<br />
 into this:<br />
 
 <img src="/image.png" width="400">
+<img src="/so_long.gif" width="400">
+
 
 For the graphics I have used a graphical library that was build and provided by my school which is called MinilibX.<br />
 MinilibX utilizes the X Window System to render a window in which graphical output can be displayed. 
